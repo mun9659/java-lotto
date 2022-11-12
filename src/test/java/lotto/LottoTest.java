@@ -3,7 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.domain.Customer;
+import lotto.domain.Money;
 import lotto.domain.Lotto;
 
 import java.util.List;
@@ -30,22 +30,22 @@ class LottoTest {
 	@DisplayName("로또 구입 금액 입력_정상처리")
 	@Test
 	void inputMoneyByCorrect() {
-		Customer customer = new Customer();
+		// Customer customer = new Customer();
 		
-		assertThat(customer.times).isEqualTo(8000);
+		// assertThat(customer.times).isEqualTo(8);
 	}
 	
 	@DisplayName("로또 구입 금액 입력_에러처리1")
 	@Test
 	void inputMoneyByError1() {
-		assertThatThrownBy(() -> Customer.dividedCheck("1001"))
+		assertThatThrownBy(() -> new Money("1001"))
 		.isInstanceOf(IllegalArgumentException.class);
 	}
 	
 	@DisplayName("로또 구입 금액 입력_에러처리2")
 	@Test
 	void inputMoneyByError2() {
-		assertThatThrownBy(() -> Customer.numberCheck("100B"))
+		assertThatThrownBy(() -> new Money("100B"))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 }
